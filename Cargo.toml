@@ -3,5 +3,14 @@ name = "leptonica-sys"
 version = "0.1.0"
 authors = ["Chris Couzens <ccouzens@gmail.com>"]
 edition = "2018"
+links = "lept"
+description = """
+FFI bindings for Leptonica
+"""
+license = "MIT"
+repository = "https://github.com/ccouzens/leptonica-rs"
+keywords = ["leptonica"]
+categories = ["api-bindings", "multimedia::images"]
 
-[dependencies]
+[build-dependencies]
+bindgen = "0.49.2"
