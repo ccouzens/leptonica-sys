@@ -8,7 +8,7 @@ description = """
 FFI bindings for Leptonica
 """
 license = "MIT"
-repository = "https://github.com/ccouzens/leptonica-rs"
+repository = "https://github.com/ccouzens/leptonica-sys"
 keywords = ["leptonica"]
 categories = ["api-bindings", "multimedia::images"]
 
