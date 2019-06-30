@@ -19,6 +19,7 @@ fn main() {
             builder = builder.whitelist_function(function_name);
         }
     }
+    builder = builder.whitelist_var("L_.*");
     let bindings = builder.generate().expect("Unable to generate bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
