@@ -12,4 +12,4 @@ keywords = ["leptonica"]
 categories = ["api-bindings", "multimedia::images"]
 
 [build-dependencies]
-bindgen = "0.50"
+bindgen = "0.52"
