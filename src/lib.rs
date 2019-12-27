@@ -18,4 +18,11 @@ mod tests {
             pixFreeData(image);
         }
     }
+
+    #[test]
+    #[allow(path_statements)]
+    fn defined_constants() {
+        super::IFF_UNKNOWN;
+        super::IFF_BMP;
+    }
 }
