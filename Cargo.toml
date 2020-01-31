@@ -13,3 +13,7 @@ categories = ["api-bindings", "multimedia::images"]
 
 [build-dependencies]
 bindgen = "0.52"
+[target.'cfg(windows)'.build-dependencies]
+vcpkg = "0.2.8"
+
+
