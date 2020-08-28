@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install tesseract
+    - name: Install Leptonica
       run: sudo apt-get install libleptonica-dev clang
     - uses: actions/checkout@v2
     - name: Build
