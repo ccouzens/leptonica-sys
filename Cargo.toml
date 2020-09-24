@@ -1,6 +1,6 @@
 [package]
 name = "leptonica-sys"
-version = "0.3.2"
+version = "0.3.3"
 authors = ["Chris Couzens <ccouzens@gmail.com>"]
 edition = "2018"
 links = "lept"
@@ -12,7 +12,7 @@ keywords = ["leptonica"]
 categories = ["api-bindings", "multimedia::images"]
 
 [build-dependencies]
-bindgen = "0.54"
+bindgen = "0.55"
 [target.'cfg(windows)'.build-dependencies]
 vcpkg = "0.2.8"
 
