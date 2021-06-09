@@ -13,5 +13,9 @@ categories = ["api-bindings", "multimedia::images"]
 
 [build-dependencies]
 bindgen = "0.56"
+
 [target.'cfg(windows)'.build-dependencies]
 vcpkg = "0.2.8"
+
+[target.'cfg(target_os="macos")'.build-dependencies]
+pkg-config = "0.3.19"
