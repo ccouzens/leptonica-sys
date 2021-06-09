@@ -1,11 +1,11 @@
 extern crate bindgen;
 
+#[cfg(target_os = "macos")]
+use pkg_config;
 use std::env;
 use std::path::PathBuf;
 #[cfg(windows)]
 use vcpkg;
-#[cfg(target_os="macos")]
-use pkg_config;
 
 // const MINIMUM_LEPT_VERSION: &str = "1.80.0";
 
@@ -22,7 +22,7 @@ fn find_leptonica_system_lib() -> Option<String> {
 }
 
 // On macOS, we sometimes need additional search paths, which we get using pkg-config
-#[cfg(target_os="macos")]
+#[cfg(target_os = "macos")]
 fn find_leptonica_system_lib() -> Option<String> {
     let pk = pkg_config::Config::new()
         // .atleast_version(MINIMUM_LEPT_VERSION)
@@ -33,13 +33,13 @@ fn find_leptonica_system_lib() -> Option<String> {
     println!("cargo:rustc-link-lib=lept");
 
     let mut include_path = pk.include_paths[0].clone();
-    // The include file used in this project has "leptonica" as part of 
+    // The include file used in this project has "leptonica" as part of
     // the header file already
     include_path.pop();
     Some(include_path.to_string_lossy().to_string())
 }
 
-#[cfg(all(not(windows), not(target_os="macos")))]
+#[cfg(all(not(windows), not(target_os = "macos")))]
 fn find_leptonica_system_lib() -> Option<String> {
     println!("cargo:rustc-link-lib=lept");
     None
