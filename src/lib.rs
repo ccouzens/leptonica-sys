@@ -7,7 +7,7 @@ include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 #[cfg(test)]
 mod tests {
     use super::{pixFreeData, pixRead};
-    use std::ffi::CString;
+    use std::ffi::CStr;
 
     #[test]
     fn image_size() {
