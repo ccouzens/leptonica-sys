@@ -41,9 +41,7 @@ fn find_leptonica_system_lib() -> Option<String> {
 
 #[cfg(target_os = "linux")]
 fn find_leptonica_system_lib() -> Option<String> {
-    let pk = pkg_config::Config::new()
-        .probe("lept")
-        .unwrap();
+    let pk = pkg_config::Config::new().probe("lept").unwrap();
     // Tell cargo to tell rustc to link the system proj shared library.
     println!("cargo:rustc-link-search=native={:?}", pk.link_paths[0]);
     println!("cargo:rustc-link-lib=lept");
