@@ -11,14 +11,41 @@ use vcpkg;
 
 #[cfg(windows)]
 fn find_leptonica_system_lib() -> Option<String> {
-    let lib = vcpkg::Config::new().find_package("leptonica").unwrap();
+    println!("cargo:rerun-if-env-changed=LEPTONICA_INCLUDE_PATH");
+    println!("cargo:rerun-if-env-changed=LEPTONICA_LINK_PATHS");
+    println!("cargo:rerun-if-env-changed=LEPTONICA_LINK_LIBS");
 
-    let include = lib
-        .include_paths
-        .iter()
-        .map(|x| x.to_string_lossy())
-        .collect::<String>();
-    Some(include)
+    let vcpkg = || {
+        let lib = vcpkg::Config::new().find_package("leptonica").unwrap();
+
+        let include = lib
+            .include_paths
+            .iter()
+            .map(|x| x.to_string_lossy())
+            .collect::<String>();
+        Some(include)
+    };
+
+    let include_path = env::var("LEPTONICA_INCLUDE_PATH").ok();
+    let link_paths = env::var("LEPTONICA_LINK_PATHS").ok();
+    let link_paths = link_paths.as_deref().map(|x| x.split(','));
+    let link_libs = env::var("LEPTONICA_LINK_LIBS").ok();
+    let link_libs = link_libs.as_deref().map(|x| x.split(','));
+    if let (Some(include_path), Some(link_paths), Some(link_libs)) =
+        (include_path, link_paths, link_libs)
+    {
+        for link_path in link_paths {
+            println!("cargo:rustc-link-search={}", link_path)
+        }
+
+        for link_lib in link_libs {
+            println!("cargo:rustc-link-lib={}", link_lib)
+        }
+
+        Some(include_path)
+    } else {
+        vcpkg()
+    }
 }
 
 // we sometimes need additional search paths, which we get using pkg-config
