@@ -52,3 +52,13 @@ for statically linked libraries
 ```cmd
 SET RUSTFLAGS=-Ctarget-feature=+crt-static
 ```
+
+If you prefer to compile tesseract yourself (Because, for example, you could not get vcpkg to build using clang-cl.exe), you can set these environment variables: `LEPTONICA_INCLUDE_PATH`, `LEPTONICA_LINK_PATHS` and `LEPTONICA_LINK_LIBS`.
+
+For example:
+
+```
+set LEPTONICA_INCLUDE_PATH=D:\leptonica\build\include
+set LEPTONICA_LINK_PATHS=D:\leptonica\build\lib
+set LEPTONICA_LINK_LIBS=leptonica-1.83.0
+```
