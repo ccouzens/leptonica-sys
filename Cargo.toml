@@ -12,10 +12,10 @@ keywords = ["leptonica"]
 categories = ["api-bindings", "multimedia::images"]
 
 [build-dependencies]
-bindgen = "0.56"
+bindgen = "0.60.1"
 
 [target.'cfg(windows)'.build-dependencies]
-vcpkg = "0.2.8"
+vcpkg = "0.2.15"
 
 [target.'cfg(any(target_os="macos", target_os="linux"))'.build-dependencies]
-pkg-config = "0.3.19"
+pkg-config = "0.3.25"
