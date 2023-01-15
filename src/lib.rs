@@ -6,16 +6,14 @@ include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 #[cfg(test)]
 mod tests {
-    use super::{pixFreeData, pixRead};
-    use std::ffi::CStr;
+    use super::{pixFreeData, pixGetHeight, pixGetWidth, pixRead};
 
     #[test]
     fn image_size() {
         unsafe {
-            let image =
-                pixRead(CStr::from_bytes_with_nul_unchecked(b"../test image.png\0").as_ptr());
-            assert_eq!((*image).w, 1000);
-            assert_eq!((*image).h, 500);
+            let image = pixRead(b"../test image.png\0".as_ptr().cast());
+            assert_eq!(pixGetWidth(image), 1000);
+            assert_eq!(pixGetHeight(image), 500);
             pixFreeData(image);
         }
     }
