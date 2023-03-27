@@ -5,6 +5,10 @@ Rust FFI bindings to [Leptonica](http://www.leptonica.org/).
 Types and functions generated from the functions listed in
 [allheaders.h](https://github.com/DanBloomberg/leptonica/blob/master/src/allheaders.h).
 
+## Help wanted
+
+[Windows and Mac maintainers wanted](https://github.com/ccouzens/leptonica-sys/issues/17).
+
 ## Building
 
 This links to the C library Leptonica.
