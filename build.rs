@@ -57,7 +57,7 @@ fn find_leptonica_system_lib() -> Option<String> {
     let pk = pkg_config::Config::new().probe("lept").unwrap();
     // Tell cargo to tell rustc to link the system proj shared library.
     println!("cargo:rustc-link-search=native={:?}", pk.link_paths[0]);
-    println!("cargo:rustc-link-lib=lept");
+    println!("cargo:rustc-link-lib={}", pk.libs[0]);
 
     let mut include_path = pk.include_paths[0].clone();
     // The include file used in this project has "leptonica" as part of
