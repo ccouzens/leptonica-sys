@@ -62,7 +62,9 @@ fn find_leptonica_system_lib() -> Option<String> {
     let mut include_path = pk.include_paths[0].clone();
     // The include file used in this project has "leptonica" as part of
     // the header file already
-    include_path.pop();
+    if include_path.iter().last() == Some("/leptonica") {
+        include_path.pop();
+    }
     Some(include_path.to_string_lossy().to_string())
 }
 
