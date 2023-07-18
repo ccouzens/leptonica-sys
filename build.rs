@@ -59,11 +59,11 @@ fn find_leptonica_system_lib() -> Option<String> {
     println!("cargo:rustc-link-search=native={:?}", pk.link_paths[0]);
     println!("cargo:rustc-link-lib={}", pk.libs[0]);
 
-    let include_path = &pk.include_paths.iter().find(|include_path|
-            // The include file used in this project has "leptonica" as part of
-            // the header file already
-            !include_path.ends_with("leptonica"));
-    Some(include_path.unwrap().to_str().unwrap().into())
+    let mut include_path = pk.include_paths[0].clone();
+    if include_path.ends_with("leptonica") {
+        include_path.pop();
+    }
+    Some(include_path.to_str().unwrap().into())
 }
 
 #[cfg(all(not(windows), not(target_os = "macos"), not(target_os = "linux")))]
