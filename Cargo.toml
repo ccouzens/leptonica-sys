@@ -1,6 +1,6 @@
 [package]
 name = "leptonica-sys"
-version = "0.4.5"
+version = "0.4.6"
 authors = ["Chris Couzens <ccouzens@gmail.com>"]
 edition = "2018"
 links = "lept"
