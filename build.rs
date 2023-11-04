@@ -79,7 +79,7 @@ fn main() {
     let clang_extra_include = find_leptonica_system_lib();
 
     let mut bindings = bindgen::Builder::default().header("wrapper.h");
-    
+
     #[cfg(windows)]
     {
         bindings = bindings.clang_args(["-x", "c++"]);
