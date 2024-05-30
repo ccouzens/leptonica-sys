@@ -32,6 +32,7 @@ jobs:
     steps:
     - uses: msys2/setup-msys2@v2
       with:
+        update: true
         install: mingw-w64-leptonica
     - uses: actions/checkout@v2
     - name: Build
