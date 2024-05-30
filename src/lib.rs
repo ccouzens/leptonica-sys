@@ -24,4 +24,12 @@ mod tests {
         super::IFF_UNKNOWN;
         super::IFF_BMP;
     }
+
+    #[test]
+    #[allow(path_statements)]
+    fn defined_functions() {
+        super::boxCreateValid;
+        super::boxDestroy;
+        super::boxGetGeometry;
+    }
 }
