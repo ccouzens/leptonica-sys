@@ -24,3 +24,19 @@ jobs:
       run: cargo test --verbose --lib
     - name: Check formatting
       run: cargo fmt -- --check
+  windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: msys2/setup-msys2@v2
+      with:
+        update: true
+        install: mingw-w64-x86_64-leptonica mingw-w64-x86_64-rust clang
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo test --verbose --lib
+    
