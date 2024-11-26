@@ -84,6 +84,8 @@ fn main() {
         bindings = bindings.clang_arg(format!("-I{}", include_path));
     }
 
+    bindings = bindings.blocklist_type("max_align_t");
+
     let bindings = bindings
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
